@@ -7,7 +7,14 @@ function App() {
     <>
       <Header />
       <S.Body>
-      <S.Div></S.Div>
+        <S.Search placeholder="검색어"/>
+        <S.Div>
+          <S.Tittle>스킨 컬러</S.Tittle>
+            <S.ColorDiv>
+              <S.Color color="red"></S.Color>
+              <S.Color color="blue"></S.Color>
+            </S.ColorDiv>
+        </S.Div>
       </S.Body>
     </>
   );
