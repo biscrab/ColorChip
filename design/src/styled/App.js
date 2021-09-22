@@ -11,8 +11,7 @@ export const Body = styled.div`
 `
 
 export const Div = styled.div`
-    position: relative;
-    top: 20px;
+    margin-top: 20px;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     width: 900px;
@@ -27,7 +26,7 @@ export const Tittle = styled.h3`
 
 export const ColorDiv = styled.div`
     position: relative;
-    top: 20px;
+    top: 15px;
     display: flex;
 `
 
@@ -37,6 +36,15 @@ export const Color = styled.div`
     height: 70px;
     border-radius: 10px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const CSpan = styled.span`
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 0px 10px; 
+    color: rgb(245, 245, 245);
 `
 
 export const Header = styled.div`
