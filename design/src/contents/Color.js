@@ -7,7 +7,7 @@ const C = ({item}) => {
     const textRef = useRef();
     
     const Copy = () => {
-        var text = textRef.current
+       
     }
 
     return(

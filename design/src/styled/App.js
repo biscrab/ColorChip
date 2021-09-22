@@ -15,7 +15,7 @@ export const Div = styled.div`
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     width: 900px;
-    height: 250px;
+    height: auto;
     padding: 20px;
     border-radius: 10px;
 `
@@ -28,12 +28,13 @@ export const ColorDiv = styled.div`
     position: relative;
     top: 15px;
     display: flex;
+    flex-wrap: wrap;
 `
 
 export const Color = styled.div`
     background-color: ${props => props.color};
-    width: 70px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
     border-radius: 10px;
     margin: 10px;
     display: flex;
@@ -42,8 +43,11 @@ export const Color = styled.div`
 `
 
 export const CSpan = styled.span`
+    width: 70px;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
-    padding: 0px 10px; 
     color: rgb(245, 245, 245);
 `
 
