@@ -14,15 +14,35 @@ const C = ({item}) => {
 
     return(
         <CopyToClipboard text={item}>
-        <S.Color color={item} onClick={()=>setCopy(1)}><S.CSpan>{copy ? "copied" : item}</S.CSpan></S.Color>
+        <S.Color color={item} onClick={()=>setCopy(1)}><S.CSpan>{copy ? "복사됨" : item}</S.CSpan></S.Color>
         </CopyToClipboard>
     );
 }
 
 const Color = ({lists, name}) => {
+
+
+    function setStar() {
+        var s = JSON.parse(localStorage.getItem('star'));
+
+        if(S.include(name)){
+            s.splice(s.indexOf(name),1);
+        }
+        else{
+            s.push(name);
+        }
+
+        localStorage.star = JSON.stringify(s);
+    }
+
     return(
         <S.Div>
-          <S.Tittle>{name}</S.Tittle>
+            <S.HDiv>
+            <S.Tittle>{name}</S.Tittle>
+            <S.Star color={localStorage.star.find(name) ? "gold" : "white"}>
+                <i class="far fa-star fa-lg"></i>
+            </S.Star>
+            </S.HDiv>
             <S.ColorDiv>
             {lists.map(
                 item => {

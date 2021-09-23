@@ -21,6 +21,11 @@ export const Div = styled.div`
     border-radius: 10px;
 `
 
+export const HDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
 export const Tittle = styled.h3`
     margin: 0;
 `
@@ -41,6 +46,10 @@ export const Color = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+export const Star = styled.span`
+    position: relative;
 `
 
 export const CSpan = styled.span`
@@ -68,7 +77,7 @@ export const Head = styled.div`
     height: 45px;
     width: 130px;
     position: relative;
-    left: 300px;
+    left: 310px;
     top: 7.5px;
 `
 
