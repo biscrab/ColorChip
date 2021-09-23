@@ -23,7 +23,7 @@ function App() {
       <S.Body>
         <S.SearchBox>
         <S.Search placeholder="검색어" onChange={(e)=>setSearch(e.target.value)}/>
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         {rlist.map(
           item => {

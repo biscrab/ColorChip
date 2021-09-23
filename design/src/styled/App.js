@@ -53,14 +53,23 @@ export const CSpan = styled.span`
 `
 
 export const Header = styled.div`
+    display: flex;
+    align-content: center;
     background-color: white;
     height: 60px;
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 100;
+`
+
+export const Head = styled.div`
     display: flex;
-    align-content: center;
+    height: 45px;
+    width: 130px;
+    position: relative;
+    left: 300px;
+    top: 7.5px;
 `
 
 export const HeadImg = styled.img`
@@ -71,18 +80,22 @@ export const HeadImg = styled.img`
 export const HeadTittle = styled.h2`
     margin: 0;
     position: relative;
+    top: 2.5px;
     left: 10px;
+    height: 40px;
 `
 
 export const Search = styled.input`
     border: 0;
     padding: 0px 10px;
-    height: 30px;
     width: 400px;
+    height: 35px;
+    outline: 0;
 `
 
 export const SearchBox = styled.div`
     border: 2px solid gray;
     background-color: white;
-    width: 460px;
+    height: 35px;
+    width: 450px;
 `
