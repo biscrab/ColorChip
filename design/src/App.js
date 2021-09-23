@@ -21,8 +21,10 @@ function App() {
     <>
       <Header />
       <S.Body>
+        <S.SearchBox>
         <S.Search placeholder="검색어" onChange={(e)=>setSearch(e.target.value)}/>
-        <button onClick={Search()}>검색</button>
+        <i class="fas fa-search"></i>
+        </S.SearchBox>
         {rlist.map(
           item => {
             return(

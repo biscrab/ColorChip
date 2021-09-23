@@ -75,8 +75,14 @@ export const HeadTittle = styled.h2`
 `
 
 export const Search = styled.input`
-    border: 2px solid gray;
+    border: 0;
     padding: 0px 10px;
     height: 30px;
     width: 400px;
+`
+
+export const SearchBox = styled.div`
+    border: 2px solid gray;
+    background-color: white;
+    width: 460px;
 `

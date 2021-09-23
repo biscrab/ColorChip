@@ -1,17 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import * as S from '../styled/App'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const C = ({item}) => {
 
-    const textRef = useRef();
+    const [copy, setCopy] = useState(0);
     
-    const Copy = () => {
-       
-    }
+    useEffect(()=>{
+        if(copy){
+            setTimeout(()=>setCopy(0), 2000);
+        }
+    })
 
     return(
-        <S.Color color={item} onClick={()=>Copy()}><S.CSpan ref={textRef}>{item}</S.CSpan></S.Color>
+        <CopyToClipboard text={item}>
+        <S.Color color={item} onClick={()=>setCopy(1)}><S.CSpan>{copy ? "copied" : item}</S.CSpan></S.Color>
+        </CopyToClipboard>
     );
 }
 
