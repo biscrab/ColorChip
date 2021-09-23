@@ -7,6 +7,7 @@ export const Body = styled.div`
     position: relative;
     top: 30px;
     left: 50%;
+    padding-bottom: 80px;
     transform: translateX(-50%);
 `
 
