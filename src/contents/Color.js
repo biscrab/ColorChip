@@ -24,7 +24,7 @@ const Color = ({lists, name}) => {
 
     function setStar() {
         var s = JSON.parse(localStorage.getItem('star'));
-
+        /*
         if(S.include(name)){
             s.splice(s.indexOf(name),1);
         }
@@ -32,7 +32,7 @@ const Color = ({lists, name}) => {
             s.push(name);
         }
 
-        localStorage.star = JSON.stringify(s);
+        localStorage.star = JSON.stringify(s);*/
     }
 
     return(
