@@ -31,7 +31,12 @@ const Color = ({lists, name}) => {
             s = [];
         }
         if(s.includes(name)){
-            s.splice(s.indexOf('name'),1);
+
+            function Delete(value) {
+                return value !== name;
+            }
+
+            s = s.filter(Delete);
             setSt(false);
         }
         else{
@@ -49,8 +54,11 @@ const Color = ({lists, name}) => {
         if(s.includes(name)){
             setSt(true);
         }
+        else{
+            setSt(false);
+        }
 
-    },[])
+    })
 
     return(
         <S.Div>
