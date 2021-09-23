@@ -39,7 +39,7 @@ const Color = ({lists, name}) => {
         <S.Div>
             <S.HDiv>
             <S.Tittle>{name}</S.Tittle>
-            <S.Star color={localStorage.star.find(name) ? "gold" : "white"}>
+            <S.Star>
                 <i class="far fa-star fa-lg"></i>
             </S.Star>
             </S.HDiv>
