@@ -21,27 +21,50 @@ const C = ({item}) => {
 
 const Color = ({lists, name}) => {
 
+    const [st, setSt] = useState(false);
 
     function setStar() {
+
         var s = JSON.parse(localStorage.getItem('star'));
-        /*
-        if(S.include(name)){
-            s.splice(s.indexOf(name),1);
+
+        if(s === null){
+            s = [];
+        }
+        if(s.includes(name)){
+            s.splice(s.indexOf('name'),1);
+            setSt(false);
         }
         else{
             s.push(name);
+            setSt(true);
         }
 
-        localStorage.star = JSON.stringify(s);*/
+        localStorage.star = JSON.stringify(s);
+        console.log(s);
     }
+
+    useState(()=>{
+        var s = JSON.parse(localStorage.getItem('star'));
+
+        if(s.includes(name)){
+            setSt(true);
+        }
+
+    },[])
 
     return(
         <S.Div>
             <S.HDiv>
             <S.Tittle>{name}</S.Tittle>
-            <S.Star>
-                <i class="far fa-star fa-lg"></i>
+            {st ?
+            <S.Star onClick={()=>setStar()} color="gold"> 
+                <i class="fas fa-star"></i>
             </S.Star>
+            :
+            <S.Star onClick={()=>setStar()}> 
+                <i class="far fa-star"></i>
+            </S.Star>
+            }
             </S.HDiv>
             <S.ColorDiv>
             {lists.map(

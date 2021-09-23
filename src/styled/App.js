@@ -50,6 +50,7 @@ export const Color = styled.div`
 
 export const Star = styled.span`
     position: relative;
+    color: ${props => props.color}
 `
 
 export const CSpan = styled.span`
@@ -75,7 +76,7 @@ export const Header = styled.div`
 export const Head = styled.div`
     display: flex;
     height: 45px;
-    width: 130px;
+    width: 20%;
     position: relative;
     left: 310px;
     top: 7.5px;
