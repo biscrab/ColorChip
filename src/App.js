@@ -15,14 +15,21 @@ function App() {
   },[])
 
   function Search() {
+    var list = List;
+    list = list.filter(i => i.name.includes(search))
+    setRlist(list);
   }
+
+  useEffect(()=>{
+    Search();
+  },[search])
 
   return (
     <>
       <Header />
       <S.Body>
         <S.SearchBox>
-        <S.Search placeholder="검색어" onChange={(e)=>setSearch(e.target.value)}/>
+        <S.Search placeholder="검색어" value={search} onChange={(e)=>setSearch(e.target.value)}/>
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         {rlist.map(
