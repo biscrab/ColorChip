@@ -16,9 +16,12 @@ function App() {
   },[])
 
   function Search() {
-    var list = List;
-    list = rlist.filter(i => i.name.includes(search))
-    setRlist(list);
+    if(like === true){
+      setRlist(List.filter(i => i.name.includes(search)));
+    }
+    else{
+      setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
+    }
   }
 
   useEffect(()=>{
@@ -27,11 +30,11 @@ function App() {
 
   const FindLike = () => {
     if(like === true){
-      setRlist([List.filter(i => JSON.parse(localStorage.star).includes(i.name))]);
+      setRlist([...List])
       setLike(false);
     }
     else{
-      setRlist([...List])
+      setRlist(List.filter(i => JSON.parse(localStorage.star).includes(i.name)));
       setLike(true);
     }
   }
