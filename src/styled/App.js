@@ -109,3 +109,18 @@ export const SearchBox = styled.div`
     height: 35px;
     width: 450px;
 `
+
+export const Like = styled.span`
+    position: relative;
+    left: 20px;
+    color: dimgray;
+    
+    :hover{
+        color: royalblue;
+    }
+`
+
+export const H = styled.div`
+    display: flex;
+    align-items: center;
+`

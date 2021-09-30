@@ -9,6 +9,7 @@ function App() {
 
   const [rlist, setRlist] = useState([...List]);
   const [search, setSearch] = useState("");
+  const [like, setLike] = useState(false);
 
   useEffect(()=>{
     console.log(rlist);
@@ -16,7 +17,7 @@ function App() {
 
   function Search() {
     var list = List;
-    list = list.filter(i => i.name.includes(search))
+    list = rlist.filter(i => i.name.includes(search))
     setRlist(list);
   }
 
@@ -24,14 +25,33 @@ function App() {
     Search();
   },[search])
 
+  const FindLike = () => {
+    if(like === true){
+      setRlist([List.filter(i => JSON.parse(localStorage.star).includes(i.name))]);
+      setLike(false);
+    }
+    else{
+      setRlist([...List])
+      setLike(true);
+    }
+  }
+
   return (
     <>
       <Header />
       <S.Body>
+        <S.H>
         <S.SearchBox>
         <S.Search placeholder="검색어" value={search} onChange={(e)=>setSearch(e.target.value)}/>
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
+        {like === false ?
+        <S.Like onClick={() => FindLike()}>즐겨찾기 목록보기</S.Like>
+        : <S.Like onClick={() => FindLike()}>전체 목록보기</S.Like>
+        }
+        </S.H> 
+        {rlist ?
+        <>
         {rlist.map(
           item => {
             return(
@@ -39,6 +59,9 @@ function App() {
             )
           }
         )}
+        </>:
+        <h3>해당하는 팔레트가 없습니다.</h3>
+        }
       </S.Body>
     </>
   );
