@@ -13,6 +13,8 @@ function App() {
 
   useEffect(()=>{
     console.log(rlist);
+    if(!localStorage.star)
+      localStorage.star = [];
   },[])
 
   function Search() {
@@ -26,7 +28,7 @@ function App() {
 
   useEffect(()=>{
     Search();
-  },[search])
+  },[search, like])
 
   const FindLike = () => {
     if(like === true){
@@ -49,12 +51,10 @@ function App() {
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         {like === false ?
+        <S.Like onClick={() => FindLike()}>전체 목록보기</S.Like> :
         <S.Like onClick={() => FindLike()}>즐겨찾기 목록보기</S.Like>
-        : <S.Like onClick={() => FindLike()}>전체 목록보기</S.Like>
         }
         </S.H> 
-        {rlist ?
-        <>
         {rlist.map(
           item => {
             return(
@@ -62,9 +62,6 @@ function App() {
             )
           }
         )}
-        </>:
-        <h3>해당하는 팔레트가 없습니다.</h3>
-        }
       </S.Body>
     </>
   );

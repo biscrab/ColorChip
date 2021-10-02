@@ -21,8 +21,6 @@ const C = ({item}) => {
 
 const Color = ({lists, name}) => {
 
-    const [st, setSt] = useState(false);
-
     function setStar() {
 
         var s = JSON.parse(localStorage.getItem('star'));
@@ -37,34 +35,20 @@ const Color = ({lists, name}) => {
             }
 
             s = s.filter(Delete);
-            setSt(false);
         }
         else{
             s.push(name);
-            setSt(true);
         }
 
         localStorage.star = JSON.stringify(s);
         console.log(s);
     }
 
-    useState(()=>{
-        var s = JSON.parse(localStorage.getItem('star'));
-
-        if(s.includes(name)){
-            setSt(true);
-        }
-        else{
-            setSt(false);
-        }
-
-    })
-
     return(
         <S.Div>
             <S.HDiv>
             <S.Tittle>{name}</S.Tittle>
-            {st ?
+            {JSON.parse(localStorage.star).includes(name) ?
             <S.Star onClick={()=>setStar()} color="gold"> 
                 <i class="fas fa-star"></i>
             </S.Star>
