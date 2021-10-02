@@ -13,21 +13,15 @@ function App() {
 
   useEffect(()=>{
     console.log(rlist);
-    if(localStorage.getItem("star")){
-      
-    }
-    else{
-      localStorage.setItem("star", "[]");
-    }
   },[])
 
   function Search() {
     if(like === true){
       setRlist(List.filter(i => i.name.includes(search)));
     }
-    else{
+    /*else{
       setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
-    }
+    }*/
   }
 
   useEffect(()=>{

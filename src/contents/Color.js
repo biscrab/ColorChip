@@ -10,6 +10,10 @@ const C = ({item}) => {
         if(copy){
             setTimeout(()=>setCopy(0), 2000);
         }
+
+        if(localStorage.star){
+            console.log(localStorage.star);
+        }
     })
 
     return(
@@ -25,9 +29,6 @@ const Color = ({lists, name}) => {
 
         var s = JSON.parse(localStorage.getItem('star'));
 
-        if(s === null){
-            s = [];
-        }
         if(s.includes(name)){
 
             function Delete(value) {
@@ -48,7 +49,9 @@ const Color = ({lists, name}) => {
         <S.Div>
             <S.HDiv>
             <S.Tittle>{name}</S.Tittle>
-            {JSON.parse(localStorage.star).includes(name) ?
+            {localStorage.star ?
+            <>
+            {localStorage.star.includes(name) ?
             <S.Star onClick={()=>setStar()} color="gold"> 
                 <i class="fas fa-star"></i>
             </S.Star>
@@ -57,6 +60,9 @@ const Color = ({lists, name}) => {
                 <i class="far fa-star"></i>
             </S.Star>
             }
+            </>
+            :
+            localStorage.star = "[]"}
             </S.HDiv>
             <S.ColorDiv>
             {lists.map(
