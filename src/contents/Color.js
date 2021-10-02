@@ -25,6 +25,17 @@ const C = ({item}) => {
 
 const Color = ({lists, name}) => {
 
+    const [like, setLike] = useState(false);
+
+    useEffect(()=>{
+        if(localStorage.getItem('star').includes(name)){
+            setLike(true);
+        }   
+        else{
+            setLike(false)
+        }
+    },[])
+
     function setStar() {
 
         var s = JSON.parse(localStorage.getItem('star'));
@@ -36,9 +47,11 @@ const Color = ({lists, name}) => {
             }
 
             s = s.filter(Delete);
+            setLike(false);
         }
         else{
             s.push(name);
+            setLike(true);
         }
 
         localStorage.star = JSON.stringify(s);
@@ -49,9 +62,8 @@ const Color = ({lists, name}) => {
         <S.Div>
             <S.HDiv>
             <S.Tittle>{name}</S.Tittle>
-            {localStorage.star ?
             <>
-            {localStorage.star.includes(name) ?
+            {like === true ?
             <S.Star onClick={()=>setStar()} color="gold"> 
                 <i class="fas fa-star"></i>
             </S.Star>
@@ -61,8 +73,6 @@ const Color = ({lists, name}) => {
             </S.Star>
             }
             </>
-            :
-            localStorage.star = "[]"}
             </S.HDiv>
             <S.ColorDiv>
             {lists.map(
