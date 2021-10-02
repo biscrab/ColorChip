@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
     console.log(rlist);
     if(!localStorage.star){
-      localStorage.star = 1231;
+      localStorage.star = "[]";
     }
   },[])
 
