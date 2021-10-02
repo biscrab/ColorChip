@@ -13,7 +13,10 @@ function App() {
 
   useEffect(()=>{
     console.log(rlist);
-    if(!localStorage.star){
+    if(localStorage.getItem("star")){
+      
+    }
+    else{
       localStorage.setItem("star", "[]");
     }
   },[])
