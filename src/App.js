@@ -19,25 +19,25 @@ function App() {
     if(like === true){
       setRlist(List.filter(i => i.name.includes(search)));
     }
-    /*else{
+    else{
       setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
-    }*/
+    }
+  }
+
+  function findLike(){
+    if(like === true){
+      setRlist(List.filter(i => localStorage.star.includes(i.name)));
+      setLike(false);
+    }
+    else{
+      setRlist([...List]);
+      setLike(true);
+    }
   }
 
   useEffect(()=>{
     Search();
-  },[search, like])
-
-  const FindLike = () => {
-    if(like === true){
-      setRlist([...List])
-      setLike(false);
-    }
-    else{
-      setRlist(List.filter(i => JSON.parse(localStorage.star).includes(i.name)));
-      setLike(true);
-    }
-  }
+  },[search])
 
   return (
     <>
@@ -49,8 +49,8 @@ function App() {
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         {like === false ?
-        <S.Like onClick={() => FindLike()}>전체 목록보기</S.Like> :
-        <S.Like onClick={() => FindLike()}>즐겨찾기 목록보기</S.Like>
+        <S.Like onClick={() => findLike()}>전체 목록보기</S.Like> :
+        <S.Like onClick={() => findLike()}>즐겨찾기 목록보기</S.Like>
         }
         </S.H> 
         {rlist.map(
