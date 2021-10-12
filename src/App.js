@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
     console.log(rlist);
     if(!localStorage.star){
-      localStorage.setItem("star", "[]");
+      localStorage.setItem("star", "[{}]");
     }
   },[])
 
