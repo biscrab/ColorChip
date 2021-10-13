@@ -28,13 +28,13 @@ function App() {
   }
 
   function findLike(){
-    if(like === true){
+    if(like === false){
       setRlist(List.filter(i => localStorage.star.includes(i.name)));
-      setLike(false);
+      setLike(true);
     }
     else{
       setRlist([...List]);
-      setLike(true);
+      setLike(false);
     }
   }
 
@@ -51,7 +51,7 @@ function App() {
         <S.Search placeholder="검색어" value={search} onChange={(e)=>setSearch(e.target.value)}/>
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
-        {like === false ?
+        {like === true ?
         <S.Like onClick={() => findLike()}>전체 목록보기</S.Like> :
         <S.Like onClick={() => findLike()}>즐겨찾기 목록보기</S.Like>
         }
