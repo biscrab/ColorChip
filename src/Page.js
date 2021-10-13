@@ -4,8 +4,12 @@ import * as S from './styled/App'
 import Color from './contents/Color';
 import { useEffect, useState } from 'react';
 import List from './Color.json'
+import { useHistory, useLocation} from 'react-router-dom'
 
-function App() {
+function Page() {
+
+  let history = useHistory();
+  let location = useLocation();
 
   const [rlist, setRlist] = useState([...List]);
   const [search, setSearch] = useState("");
@@ -16,6 +20,8 @@ function App() {
     if(!localStorage.star){
       localStorage.setItem("star", "[{}]");
     }
+    findLike();
+    console.log(history);
   },[])
 
   function Search() {
@@ -28,13 +34,13 @@ function App() {
   }
 
   function findLike(){
-    if(like === false){
-      setRlist(List.filter(i => localStorage.star.includes(i.name)));
+    if(location.path === '/like'){
       setLike(true);
+      setRlist(List.filter(i => localStorage.star.includes(i.name)));
     }
     else{
-      setRlist([...List]);
       setLike(false);
+      setRlist([...List]);
     }
   }
 
@@ -52,8 +58,8 @@ function App() {
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         {like === true ?
-        <S.Like onClick={() => findLike()}>전체 목록보기</S.Like> :
-        <S.Like onClick={() => findLike()}>즐겨찾기 목록보기</S.Like>
+        <S.Like onClick={() => history.push("/")}>전체 목록보기</S.Like> :
+        <S.Like onClick={() => history.push("/like")}>즐겨찾기 목록보기</S.Like>
         }
         </S.H> 
         {rlist.map(
@@ -68,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default Page;
