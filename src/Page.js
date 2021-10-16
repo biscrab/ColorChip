@@ -11,18 +11,22 @@ function Page() {
   let history = useHistory();
   let location = useLocation();
 
-  const [rlist, setRlist] = useState([...List]);
+  const [rlist, setRlist] = useState([]);
   const [search, setSearch] = useState("");
   const [like, setLike] = useState(false);
 
   useEffect(()=>{
     console.log(rlist);
     if(!localStorage.star){
-      localStorage.setItem("star", "[{}]");
+      localStorage.setItem("star", "[]");
     }
-    findLike();
     console.log(history);
+    console.log(location);
   },[])
+
+  useEffect(()=>{
+    findLike();
+  })
 
   function Search() {
     if(like === true){
@@ -34,7 +38,7 @@ function Page() {
   }
 
   function findLike(){
-    if(location.path === '/like'){
+    if(location.pathname === '/like'){
       setLike(true);
       setRlist(List.filter(i => localStorage.star.includes(i.name)));
     }

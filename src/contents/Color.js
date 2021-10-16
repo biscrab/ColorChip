@@ -10,10 +10,6 @@ const C = ({item}) => {
         if(copy){
             setTimeout(()=>setCopy(0), 2000);
         }
-
-        if(localStorage.star){
-            console.log(localStorage.star);
-        }
     })
 
     return(
