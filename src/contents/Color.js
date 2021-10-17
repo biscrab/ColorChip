@@ -6,15 +6,14 @@ const C = ({item}) => {
 
     const [copy, setCopy] = useState(0);
     
-    useEffect(()=>{
-        if(copy){
-            setTimeout(()=>setCopy(0), 2000);
-        }
-    })
+    const Copy = () => {
+        setCopy(1);
+        setTimeout(()=>setCopy(0), 2000);
+    }
 
     return(
         <CopyToClipboard text={item}>
-        <S.Color color={item} onClick={()=>setCopy(1)}><S.CSpan>{copy ? "복사됨" : item}</S.CSpan></S.Color>
+        <S.Color color={item} onClick={()=>Copy()}><S.CSpan>{copy ? "복사됨" : item}</S.CSpan></S.Color>
         </CopyToClipboard>
     );
 }

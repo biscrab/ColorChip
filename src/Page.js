@@ -13,7 +13,6 @@ function Page() {
 
   const [rlist, setRlist] = useState([]);
   const [search, setSearch] = useState("");
-  const [like, setLike] = useState(false);
 
   useEffect(()=>{
     console.log(rlist);
@@ -24,33 +23,27 @@ function Page() {
     console.log(location);
   },[])
 
-  useEffect(()=>{
-    findLike();
-  })
-
   function Search() {
-    if(like === true){
-      setRlist(List.filter(i => i.name.includes(search)));
+    if(location.pathname === '/like'){
+      setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
     }
     else{
-      setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
+      setRlist(List.filter(i => i.name.includes(search)));
     }
   }
 
-  function findLike(){
+  useEffect(()=>{
     if(location.pathname === '/like'){
-      setLike(true);
       setRlist(List.filter(i => localStorage.star.includes(i.name)));
     }
     else{
-      setLike(false);
       setRlist([...List]);
     }
-  }
+  },[location.pathname])
 
   useEffect(()=>{
     Search();
-  },[search])
+  },[search, location.pathname])
 
   return (
     <>
@@ -58,10 +51,10 @@ function Page() {
       <S.Body>
         <S.H>
         <S.SearchBox>
-        <S.Search placeholder="검색어" value={search} onChange={(e)=>setSearch(e.target.value)}/>
+        <S.Search placeholder="검색어" onChange={(e)=>setSearch(e.target.value)}/>
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
-        {like === true ?
+        {location.pathname === '/like' ?
         <S.Like onClick={() => history.push("/")}>전체 목록보기</S.Like> :
         <S.Like onClick={() => history.push("/like")}>즐겨찾기 목록보기</S.Like>
         }
