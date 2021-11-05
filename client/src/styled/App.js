@@ -33,14 +33,6 @@ export const UDiv = styled.div`
     display: flex;
     flex-direction: column;
 
-    input{
-        border: 2px solid gray;
-        outline: 0;
-        height: 30px;
-        width: 400px;
-        padding: 0px 10px;
-    }
-
     h2{
         font-size: 19px;
         color: dimgray;
@@ -49,20 +41,49 @@ export const UDiv = styled.div`
     }
 `
 
-export const PB = styled.div`
-    padding-bottom: 50px;
+export const RegistDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 400px;
 `
 
-export const UC = styled.input`
-    border: 2px solid gray;
+export const PB = styled.div`
+    padding-bottom: 30px;
+    width: 400px;
+
+    input{
+        border: 2px solid darkgray;
+        outline: 0;
+        height: 30px;
+        width: 377px;
+        padding: 0px 10px;
+    }
+`
+
+export const Input = styled.input`
+    border: 2px solid darkgray;
+    outline: 0;
     height: 30px;
-    width: 336px;
+    width: 100%;
+    padding: 0px 10px;
+`
+
+export const UC = styled.div`
+    border: 2px solid darkgray;
+    height: 30px;
+    width: 363px;
+    outline: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const ACDiv = styled.div`
     display: flex;
     button{
-        width: 50px;
+        width: 80px;
         outline: 0;
         border: 0;
         color: white;
@@ -75,10 +96,22 @@ export const UCDiv = styled.div`
     margin-top: 10px;
 `
 
+export const Regist = styled.button`
+    background-color: royalblue;
+    width: 160px;
+    border: 0;
+    font-size: 18px;
+    color: white;
+    height: 40px;
+    margin-top: 30px;
+`
+
 export const UColor = styled.div`
     background-color: ${props => props.color};
-    height: 34px;
+    height: 30px;
     width: 34px;
+    border: 2px solid darkgray;
+    border-right: 0;
 `
 
 export const HDiv = styled.div`
