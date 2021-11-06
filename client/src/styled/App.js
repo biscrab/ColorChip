@@ -3,20 +3,20 @@ import styled from "styled-components";
 
 export const Body = styled.div`
     display: flex;
-    width: 60%;
     flex-direction: column;
+    justify-content: center;
     position: relative;
     top: 30px;
     left: 50%;
     padding-bottom: 80px;
     transform: translateX(-50%);
+    width: 70%;
 `
 
 export const Div = styled.div`
     margin-top: 20px;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    width: 900px;
     height: auto;
     padding: 20px;
     border-radius: 10px;
@@ -104,6 +104,7 @@ export const Regist = styled.button`
     color: white;
     height: 40px;
     margin-top: 30px;
+    border-radius: 5px;
 `
 
 export const UColor = styled.div`
@@ -156,8 +157,7 @@ export const CSpan = styled.span`
 `
 
 export const Header = styled.div`
-    display: flex;
-    align-content: center;
+    padding-left: 15%;
     background-color: white;
     height: 60px;
     width: 100%;
@@ -171,7 +171,6 @@ export const Head = styled.div`
     height: 45px;
     width: 20%;
     position: relative;
-    left: 310px;
     top: 7.5px;
 `
 

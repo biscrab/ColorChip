@@ -4,12 +4,14 @@ import Color from '../contents/Color';
 import { useEffect, useState } from 'react';
 import { useHistory, useLocation} from 'react-router-dom'
 import List from '../Color.json'
+import axios from 'axios';
 
 function MainPage() {
 
   let history = useHistory();
   let location = useLocation();
 
+  const [list, setList] = useState([]);
   const [rlist, setRlist] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -20,6 +22,8 @@ function MainPage() {
     }
     console.log(history);
     console.log(location);
+    axios.get('http://localhost:1312/pallete')
+      .then(res => setList(...res.data))
   },[])
 
   function Search() {
