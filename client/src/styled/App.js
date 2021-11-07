@@ -164,34 +164,50 @@ export const CSpan = styled.span`
 `
 
 export const Header = styled.div`
-    padding-left: 15%;
+    padding: 0% 15%;
     background-color: white;
     height: 60px;
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 100;
+
+    div{
+        display: flex;
+        align-items: center;
+    }
+    h2{
+        margin: 0;
+        position: relative;
+        left: 10px;
+        height: 40px;
+        :hover{
+            cursor: pointer;
+        }
+    }
+
+    img{
+        height: 45px;
+        width: 45px;
+        :hover{
+            cursor: pointer;
+        }
+    }
+
+    span{
+        :hover{
+            cursor: pointer;
+        }
+    }
 `
 
 export const Head = styled.div`
     display: flex;
-    height: 45px;
-    width: 20%;
+    justify-content: space-between;
+    width: 70%;
+    height: 100%;
     position: relative;
-    top: 7.5px;
-`
-
-export const HeadImg = styled.img`
-    height: 45px;
-    width: 45px;
-`
-
-export const HeadTittle = styled.h2`
-    margin: 0;
-    position: relative;
-    top: 2.5px;
-    left: 10px;
-    height: 40px;
+    align-items: center;    
 `
 
 export const Search = styled.input`
@@ -235,4 +251,23 @@ export const H = styled.div`
         text-align: center;
         width: 100px;
     }
+`
+
+export const Background = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+`
+
+export const LoginBorder = styled.div`
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    border-radius: 20px;
 `
