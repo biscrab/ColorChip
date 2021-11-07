@@ -9,8 +9,8 @@ function App() {
     <>
     <Header />
     <Switch>
-      <Route path="/" component={P.Main}></Route>
       <Route exact path="/upload" component={P.Upload}></Route>
+      <Route path="/" component={P.Main}></Route>
     </Switch>
     </>
   );

@@ -222,4 +222,17 @@ export const Like = styled.span`
 export const H = styled.div`
     display: flex;
     align-items: center;
+
+    button{
+        outline: 0;
+        background-color: royalblue;
+        color: white;
+        border: 0;
+        border-radius: 5%;
+        position: relative;
+        left: 30px;
+        height: 30px;
+        text-align: center;
+        width: 100px;
+    }
 `

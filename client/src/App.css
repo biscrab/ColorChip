@@ -3,5 +3,6 @@ body{
   padding-top: 60px;
 }
 
-button{
+button:hover{
+  cursor: pointer;
 }

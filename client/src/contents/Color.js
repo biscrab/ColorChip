@@ -18,7 +18,7 @@ const C = ({item}) => {
     );
 }
 
-const Color = ({lists, name}) => {
+const Color = ({lists, name, master}) => {
 
     const [like, setLike] = useState(false);
 
@@ -58,7 +58,7 @@ const Color = ({lists, name}) => {
             <S.HDiv>
             <S.TDiv>
             <h3>{name}</h3>
-            <span>made by</span>
+            <span>made by {master}</span>
             </S.TDiv>
             <>
             {like === true ?

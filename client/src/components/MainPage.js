@@ -60,11 +60,12 @@ function MainPage() {
         <S.Like onClick={() => history.push("/")}>전체 목록보기</S.Like> :
         <S.Like onClick={() => history.push("/like")}>즐겨찾기 목록보기</S.Like>
         }
+        <button onClick={()=>history.push('/upload')}>추가하기 +</button>
         </S.H> 
         {rlist.map(
           item => {
             return(
-                <Color name={item.name} lists={item.color}/>
+                <Color name={item.name} master={item.master} lists={item.color}/>
             )
           }
         )}

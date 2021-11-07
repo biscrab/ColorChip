@@ -71,9 +71,19 @@ app.post('/pallete', async(req, res) => {
 })
 
 app.delete('/pallete', async(req, res) => {
-    let master = await checklogin(req.body.authorization).master;
-    db.query(`SELECT FROM pallet where name=${req.body.name} master=${req.body.master}`)
-    db.query(`DELETE FROM pallet where name=${req.body.name}`)
+    let check = await checklogin(req.headers.authorization);
+    if(check){
+        if(check.master === req.body.master){
+            db.query(`DELETE FROM pallet where name=${req.body.name} and master=${req.body.master}`, function(err, rows){
+                if(err){
+                    res.json("권한이 없습니다.")
+                }
+                else{
+                    res.json("삭제")
+                }
+            })
+        }
+    }
 })
 
 server.listen(1312, function () {
