@@ -50,17 +50,29 @@ app.post('/login', function(req, res){
     })
 })
 
+function checklogin(){
+    return new Promise((resolve, reject) => {
+        var user = jwt.verify(token, 'apple');
+        resolve(user);
+    })
+}
+
 app.get('/pallete', function(req, res){
     db.query(`SELECT * from pallet`, function(err, rows){
         res.json(rows);
     })
 })
 
-app.post('/pallete', function(req, res){
-    db.query(`INSERT INTO pallet (name, color, master) VALUES (${req.body.name}, ${req.body.color}, ${req.body.master})`)
+app.post('/pallete', async(req, res) => {
+    let check = await checklogin(req.headers.authorization);
+    if(check){
+        db.query(`INSERT INTO pallet (name, color, master) VALUES (${req.body.name}, ${req.body.color}, ${req.body.master})`)
+    }
 })
 
-app.delete('/pallete', function(req, res){
+app.delete('/pallete', async(req, res) => {
+    let master = await checklogin(req.body.authorization).master;
+    db.query(`SELECT FROM pallet where name=${req.body.name} master=${req.body.master}`)
     db.query(`DELETE FROM pallet where name=${req.body.name}`)
 })
 

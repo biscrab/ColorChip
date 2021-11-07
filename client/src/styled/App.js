@@ -119,9 +119,16 @@ export const HDiv = styled.div`
     display: flex;
     justify-content: space-between;
 `
+export const TDiv = styled.div`
+    display: flex;
+    h3{
+        margin: 0;
+    }
 
-export const Tittle = styled.h3`
-    margin: 0;
+    span{
+        padding-left: 10px;
+        color: gray;
+    }
 `
 
 export const ColorDiv = styled.div`

@@ -64,7 +64,7 @@ const UploadPage = () => {
                 <h2>색깔({list.length}/100)</h2>
                 <S.ACDiv>
                 <S.Input placeholder="색을 입력해주세요." onChange={(e)=>onChange(e.target.value)} value={input} />
-                <button onClick={()=>addColor()}>추가{input}</button>
+                <button onClick={()=>addColor()}>추가</button>
                 </S.ACDiv>
                 {list.map(
                     i => (

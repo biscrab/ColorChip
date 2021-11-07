@@ -56,7 +56,10 @@ const Color = ({lists, name}) => {
     return(
         <S.Div>
             <S.HDiv>
-            <S.Tittle>{name}</S.Tittle>
+            <S.TDiv>
+            <h3>{name}</h3>
+            <span>made by</span>
+            </S.TDiv>
             <>
             {like === true ?
             <S.Star onClick={()=>setStar()} color="gold"> 
