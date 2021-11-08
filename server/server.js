@@ -38,7 +38,7 @@ app.post('/signup', function(req, res){
 
 app.post('/login', function(req, res){
     console.log(req.body);
-    db.query(`SELECT * FROM user WHERE name=? and password=?`, [req.body.name, req.body.password], function(err, rows){
+    db.query(`SELECT * from user WHERE name=? and password=?`, [req.body.name, req.body.password], function(err, rows){
         if(err){
             res.status(406);
         }
@@ -59,8 +59,13 @@ function checklogin(){
 }
 
 app.get('/pallete', function(req, res){
-    db.query(`SELECT * from pallet`, function(err, rows){
-        res.json(rows);
+    db.query(`SELECT * FROM pallete`, function(err, rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
     })
 })
 

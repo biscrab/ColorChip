@@ -20,7 +20,7 @@ function App() {
     }
     return unescape(cValue);
 }
-  axios.defaults.headers = getCookie('c-token')
+  axios.defaults.headers['Access-Control-Allow-Origin'] = "*"
 
   return (
     <>

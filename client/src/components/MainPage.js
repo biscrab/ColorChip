@@ -17,6 +17,20 @@ function MainPage() {
   const [svalue, setSvalue] = useState();
   const [user, setUser] = useState();
 
+  function getCookie(cName) {
+    cName = cName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cName);
+    var cValue = '';
+    if(start != -1){
+    start += cName.length;
+    var end = cookieData.indexOf(';', start);
+    if(end == -1)end = cookieData.length;
+    cValue = cookieData.substring(start, end);
+    }
+    return unescape(cValue);
+}
+
   useEffect(()=>{
     console.log(rlist);
     if(!localStorage.star){
@@ -25,7 +39,13 @@ function MainPage() {
     console.log(history);
     console.log(location);
     axios.get('http://localhost:1312/pallete')
-      .then(res => setList(...res.data))
+      .then(res=>console.log(...res.data))
+
+    /*
+    if(getCookie('c-token')){
+      axios.get('http://localhost:1312/user')
+        .then(res => setUser(res.data))
+    }*/
   },[])
 
   function Search() {
@@ -36,11 +56,6 @@ function MainPage() {
       setRlist(List.filter(i => i.name.includes(search)));
     }
   }
-
-  useEffect(()=>{
-    axios.get('http://localhost:1312/user')
-      .then(res => setUser(res.data))
-  },[])
 
   useEffect(()=>{
     if(svalue === 1){
