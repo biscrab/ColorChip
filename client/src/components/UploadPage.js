@@ -42,7 +42,7 @@ const UploadPage = () => {
     const Regist = () => {
         if(name){
             if(list){
-                axios.post('http://localhost:1312/pallete', {name: name, pallete: list})
+                axios.post('http://localhost:1312/pallete', {name: name, pallete: JSON.stringify(list), master: "1"})
             }
             else{
                 alert("색깔을 추가해 주세요.")

@@ -213,7 +213,7 @@ export const Head = styled.div`
 export const Search = styled.input`
     border: 0;
     padding: 0px 10px;
-    width: 400px;
+    width: 300px;
     height: 35px;
     outline: 0;
 `
@@ -222,12 +222,23 @@ export const SearchBox = styled.div`
     border: 2px solid gray;
     background-color: white;
     height: 35px;
-    width: 450px;
+    display: flex;
+
+    select{
+        outline: 0;
+        height: 100%;
+        border: 0;
+    }
+
+    i{
+        height: 15px;
+        padding: 10px;
+    }
 `
 
 export const Like = styled.span`
     position: relative;
-    left: 20px;
+    padding-left: 10px;
     color: dimgray;
     
     :hover{
@@ -244,10 +255,9 @@ export const H = styled.div`
         background-color: royalblue;
         color: white;
         border: 0;
-        border-radius: 5%;
-        position: relative;
-        left: 30px;
-        height: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+        height: 35px;
         text-align: center;
         width: 100px;
     }
@@ -267,7 +277,55 @@ export const Background = styled.div`
 
 export const LoginBorder = styled.div`
     background-color: white;
-    width: 50%;
-    height: 80%;
+    width: 22.5%;
+    height: 50%;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 70%;
+        width: 80%;
+        padding: 10% 0%;
+        padding-top: 5%;
+    }
+
+    h3{
+        margin: 0px;
+    }
+
+    input{
+        outline: 0;
+        height: 18%;
+        width: 90%;
+        padding: 0% 4%;
+    }
+
+    button{
+        width: 100%;
+        outline: 0;
+        border: 0;
+        height: 20%;
+        border-radius: 5px;
+        color: white;
+        background-color: royalblue;
+    }
+`
+
+export const LoginHeader = styled.header`
+    height: 20%;
+    width: 100%;
+    background-color: royalblue;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3{
+        margin: 0;
+    }
 `

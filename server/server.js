@@ -86,6 +86,11 @@ app.delete('/pallete', async(req, res) => {
     }
 })
 
+app.get('/user', async(req, res) => {
+    let user = await checklogin(req.headers.authorization).name;
+    res.json(user);
+})
+
 server.listen(1312, function () {
-    console.log('Example app listening on port', 1234);
+    console.log('Example app listening on port', 1312);
 });
