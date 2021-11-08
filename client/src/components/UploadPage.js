@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from '../styled/App'
 import axios from "axios";
+import { useHistory } from "react-router";
 
 const UploadPage = () => {
 
@@ -8,11 +9,41 @@ const UploadPage = () => {
     const [name, setName] = useState();
     const [input, setInput] = useState('#');
 
+    let history = useHistory();
+
     useEffect(()=>{
         if(input === ''){
             setInput('#');
         }
     },[input])
+
+    function getCookie(cName) {
+        cName = cName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cName);
+        var cValue = '';
+        if(start != -1){
+        start += cName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cValue = cookieData.substring(start, end);
+        }
+        return unescape(cValue);
+    }
+
+    useEffect(()=>{
+        if(getCookie('c-token')){
+            axios.get('http://loclhost:1312/user')
+                .catch(error => {
+                    history.push('/')
+                    alert("로그인을 해주세요.")
+                })
+        }
+        else{
+            history.push('/')
+            alert("로그인을 해주세요.")
+        }
+    },[])
 
     const onChange = (value) => {
         if(input.length <= 7){

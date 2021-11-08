@@ -277,22 +277,12 @@ export const Background = styled.div`
 
 export const LoginBorder = styled.div`
     background-color: white;
-    width: 22.5%;
+    width: 25%;
     height: 50%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 70%;
-        width: 80%;
-        padding: 10% 0%;
-        padding-top: 5%;
-    }
 
     h3{
         margin: 0px;
@@ -300,24 +290,41 @@ export const LoginBorder = styled.div`
 
     input{
         outline: 0;
-        height: 18%;
+        height: 15%;
         width: 90%;
         padding: 0% 4%;
+        margin-top: 5%;
+        border: 2px solid darkgray;
     }
 
     button{
         width: 100%;
         outline: 0;
         border: 0;
-        height: 20%;
+        height: 60%;
         border-radius: 5px;
         color: white;
         background-color: royalblue;
+        margin-top: 5%;
+        font-size: 15px;
+    }
+`
+
+export const LDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 78%;
+    width: 80%;
+    padding: 10% 0%;
+    padding-top: 5%;
+
+    div{
+        margin-top: 5%;
     }
 `
 
 export const LoginHeader = styled.header`
-    height: 20%;
+    height: 17%;
     width: 100%;
     background-color: royalblue;
     border-radius: 10px 10px 0px 0px;
@@ -328,4 +335,13 @@ export const LoginHeader = styled.header`
     h3{
         margin: 0;
     }
-`
+    span{
+        font-size: 25px;
+        position: relative;
+        bottom: 5%;
+        left: 25%;
+        :hover{
+            cursor: pointer;
+        }
+    }
+ `

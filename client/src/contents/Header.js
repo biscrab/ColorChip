@@ -3,14 +3,16 @@ import * as S from '../styled/App'
 import color from '../images/color.png'
 import { useHistory } from "react-router";
 import axios from "axios";
+import { useCookies } from 'react-cookie';
 
 const Header = () => {
 
     let history = useHistory();
 
-    const [user, setUser] = useState({name: "", password: ""});
+    const [user, setUser] = useState();
     const [onlogin, setOnlogin] = useState(false);
-    const [input, setInput] = useState()
+    const [input, setInput] = useState({name: "", password: ""})
+    const [cookies, setCookie, removeCookie] = useCookies(['c-token']);
 
     useEffect(()=>{
        // axios.get('/user')
@@ -19,7 +21,10 @@ const Header = () => {
 
     const login = () => {
         axios.post('http://localhost:1312/login', input)
-            .then(res => setOnlogin(false))
+            .then(res => {
+                setOnlogin(false)
+                setCookie('c-token', res.data)
+            })
     }
 
     const signup = () => {
@@ -29,17 +34,20 @@ const Header = () => {
 
     const LoginBorder = () => {
         return(
-          <S.Background onClick={()=>setOnlogin(false)}>
-            <S.LoginBorder>
+          <S.Background>
+            <S.LoginBorder className="border">
                 <S.LoginHeader>
                     <h3>로그인/회원가입</h3>
+                    <span onClick={()=>setOnlogin(false)}>x</span>
                 </S.LoginHeader>
-                <div>
+                <S.LDiv>
                     <input placeholder="이름" onChange={(e)=>setInput({...input, name: e.target.value})} value={input.name}/>
                     <input placeholder="비밀번호" onChange={(e)=>setInput({...input, password: e.target.value})} value={input.password}/>
-                    <button onClick={()=>login()}>로그인</button>
-                    <button onClick={()=>signup()}>회원가입</button>
-                </div>
+                    <div>
+                        <button onClick={()=>login()}>로그인</button>
+                        <button onClick={()=>signup()}>회원가입</button>
+                    </div>
+                </S.LDiv>
             </S.LoginBorder>
           </S.Background>
         )
@@ -53,7 +61,7 @@ const Header = () => {
                     <img src={color}></img>
                     <h2>컬러 칩</h2>
                 </div>
-                {1 ?
+                {0 ?
                     <span>{1} 님</span>
                     :
                     <span onClick={()=>setOnlogin(true)}>로그인/회원가입</span>

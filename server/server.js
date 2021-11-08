@@ -19,7 +19,8 @@ db.connect();
 
 app.post('/signup', function(req, res){
     db.query(`SELECT * from user where name=${req.body.name}`, function(err, rows){
-        if(rows){
+        if(rows === []){
+            res.status === 406;
             res.json("중복");
         }
         else{
