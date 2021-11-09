@@ -33,7 +33,8 @@ const UploadPage = () => {
 
     useEffect(()=>{
         if(getCookie('c-token')){
-            axios.get('http://loclhost:1312/user')
+            axios.get('http://localhost:1312/user')
+                .then(res => console.log(1))
                 .catch(error => {
                     history.push('/')
                     alert("로그인을 해주세요.")

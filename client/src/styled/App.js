@@ -26,7 +26,7 @@ export const UDiv = styled.div`
     margin-top: 20px;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    width: 900px;
+    width: 96;
     height: auto;
     padding: 20px;
     border-radius: 10px;
@@ -228,6 +228,7 @@ export const SearchBox = styled.div`
         outline: 0;
         height: 100%;
         border: 0;
+        outline: 0;
     }
 
     i{

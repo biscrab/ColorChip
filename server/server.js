@@ -51,7 +51,7 @@ app.post('/login', function(req, res){
     })
 })
 
-function checklogin(){
+function checklogin(token){
     return new Promise((resolve, reject) => {
         var user = jwt.verify(token, 'apple');
         resolve(user);
@@ -70,14 +70,14 @@ app.get('/pallete', function(req, res){
 })
 
 app.post('/pallete', async(req, res) => {
-    let check = await checklogin(req.headers.authorization);
+    let check = await checklogin(req.headers.authorization.substring(7));
     if(check){
         db.query(`INSERT INTO pallet (name, color, master) VALUES (${req.body.name}, ${req.body.color}, ${req.body.master})`)
     }
 })
 
 app.delete('/pallete', async(req, res) => {
-    let check = await checklogin(req.headers.authorization);
+    let check = await checklogin(req.headers.authorization.substring(7));
     if(check){
         if(check.master === req.body.master){
             db.query(`DELETE FROM pallet where name=${req.body.name} and master=${req.body.master}`, function(err, rows){
@@ -93,8 +93,8 @@ app.delete('/pallete', async(req, res) => {
 })
 
 app.get('/user', async(req, res) => {
-    let user = await checklogin(req.headers.authorization).name;
-    res.json(user);
+    var user = await checklogin(req.headers.authorization.substring(7));
+    res.json(user.name);
 })
 
 server.listen(1312, function () {

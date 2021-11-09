@@ -6,3 +6,7 @@ body{
 button:hover{
   cursor: pointer;
 }
+
+i{
+  cursor: pointer;
+}

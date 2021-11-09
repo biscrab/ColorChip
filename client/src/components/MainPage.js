@@ -14,7 +14,7 @@ function MainPage() {
   const [list, setList] = useState([]);
   const [rlist, setRlist] = useState([]);
   const [search, setSearch] = useState("");
-  const [svalue, setSvalue] = useState();
+  const [svalue, setSvalue] = useState(0);
   const [user, setUser] = useState();
 
   function getCookie(cName) {
@@ -41,33 +41,25 @@ function MainPage() {
     axios.get('http://localhost:1312/pallete')
       .then(res=>console.log(...res.data))
 
-    /*
+    
     if(getCookie('c-token')){
       axios.get('http://localhost:1312/user')
         .then(res => setUser(res.data))
-    }*/
+    }
   },[])
 
   function Search() {
-    if(svalue === 1){
-      setRlist(List.filter(i => i.name.includes(search) && JSON.parse(localStorage.star).includes(i.name)))
-    }
-    else{
+    if(svalue === 0){
       setRlist(List.filter(i => i.name.includes(search)));
     }
-  }
-
-  useEffect(()=>{
-    if(svalue === 1){
-      setRlist(List.filter(i => localStorage.star.includes(i.name)));
+    else if(svalue === 1){
+      setRlist(List.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))))
     }
     else if(svalue === 2){
-      setRlist(List.filter(i => i.master === user))
+      setRlist(List.filter)
     }
-    else{
-      setRlist([...List]);
-    }
-  },[svalue])
+
+  }
 
   useEffect(()=>{
     Search();
@@ -90,7 +82,7 @@ function MainPage() {
         <S.SearchBox>
         <select onChange={(e)=>setSvalue(e.target.value)}>
           <option value={0}>전체 목록보기</option>
-          <option value={1}>즐겨찾기 목록보기</option>
+          <option value={1}>즐겨찾기 목록보기{svalue}</option>
           {user ?
           <option value={2}>내 팔레트 목록보기</option>
           :
@@ -101,6 +93,7 @@ function MainPage() {
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         <button onClick={()=>goUpload()}>추가하기 +</button>
+        <button onClick={()=>console.log(localStorage.getItem('star'))}>{localStorage.getItem('star')}</button>
         </S.H> 
         {rlist.map(
           item => {
@@ -115,3 +108,16 @@ function MainPage() {
 }
 
 export default MainPage;
+
+  /*
+  useEffect(()=>{
+    if(svalue === 1){
+      setRlist(List.filter(i => localStorage.star.includes(i.name)));
+    }
+    else if(svalue === 2){
+      setRlist(List.filter(i => i.master === user))
+    }
+    else{
+      setRlist([...List]);
+    }
+  },[svalue])*/

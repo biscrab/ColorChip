@@ -30,8 +30,8 @@ const Header = () => {
 
     useEffect(()=>{
         if(getCookie('c-token')){
-                   // axios.get('/user')
-         //   .then(res => setUser(res.data))
+            axios.get('http://localhost:1312/user')
+                .then(res => setUser(res.data))
         }
     },[])
 
@@ -77,8 +77,8 @@ const Header = () => {
                     <img src={color}></img>
                     <h2>컬러 칩</h2>
                 </div>
-                {0 ?
-                    <span>{1} 님</span>
+                {user ?
+                    <span>{user} 님</span>
                     :
                     <span onClick={()=>setOnlogin(true)}>로그인/회원가입</span>
                 }
