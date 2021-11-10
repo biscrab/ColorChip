@@ -8,6 +8,7 @@ const UploadPage = () => {
     const [list, setList] = useState([])
     const [name, setName] = useState();
     const [input, setInput] = useState('#');
+    const [user, setUser] = useState();
 
     let history = useHistory();
 
@@ -34,7 +35,7 @@ const UploadPage = () => {
     useEffect(()=>{
         if(getCookie('c-token')){
             axios.get('http://localhost:1312/user')
-                .then(res => console.log(1))
+                .then(res => setUser(res.data))
                 .catch(error => {
                     history.push('/')
                     alert("로그인을 해주세요.")
@@ -74,7 +75,9 @@ const UploadPage = () => {
     const Regist = () => {
         if(name){
             if(list){
-                axios.post('http://localhost:1312/pallete', {name: name, pallete: JSON.stringify(list), master: "1"})
+                axios.post('http://localhost:1312/pallete', {name: name, pallete: JSON.stringify(list), master: user})
+                    .then(res => alert("성공"))
+                    .then(err => alert("에러"))
             }
             else{
                 alert("색깔을 추가해 주세요.")

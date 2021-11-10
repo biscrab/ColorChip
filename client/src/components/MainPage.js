@@ -38,8 +38,16 @@ function MainPage() {
     }
     console.log(history);
     console.log(location);
+
     axios.get('http://localhost:1312/pallete')
-      .then(res=>console.log(...res.data))
+      .then(res=>{
+        setRlist([...res.data]);
+        const exlist = rlist.map(e => {
+          e.color = JSON.parse(e.color);
+          return e;
+        })
+        setRlist(exlist);
+      })
 
     
     if(getCookie('c-token')){
@@ -93,9 +101,9 @@ function MainPage() {
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         <button onClick={()=>goUpload()}>추가하기 +</button>
-        <button onClick={()=>console.log(localStorage.getItem('star'))}>{localStorage.getItem('star')}</button>
+        <button onClick={()=>console.log(rlist)}>asd</button>
         </S.H> 
-        {rlist.map(
+        {List.map(
           item => {
             return(
                 <Color name={item.name} master={item.master} lists={item.color}/>

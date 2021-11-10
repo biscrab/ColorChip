@@ -41,11 +41,17 @@ const Header = () => {
                 setOnlogin(false)
                 setCookie('c-token', res.data)
             })
+        window.location.reload();
     }
 
     const signup = () => {
         axios.post('http://localhost:1312/signup', input)
             .then(res => setOnlogin(false))
+    }
+
+    const logout = () => {
+        removeCookie('c-token')
+        window.location.reload();
     }
 
     const LoginBorder = () => {
@@ -78,7 +84,10 @@ const Header = () => {
                     <h2>컬러 칩</h2>
                 </div>
                 {user ?
-                    <span>{user} 님</span>
+                    <div>
+                        <span className="name">{user} 님</span>
+                        <span onClick={()=>logout()}>로그아웃</span>
+                    </div>
                     :
                     <span onClick={()=>setOnlogin(true)}>로그인/회원가입</span>
                 }

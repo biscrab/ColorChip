@@ -1,6 +1,11 @@
 body{
   background-color: #eeeeee;
   padding-top: 60px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html{
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 button:hover{
@@ -9,4 +14,16 @@ button:hover{
 
 i{
   cursor: pointer;
+}
+
+button{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+input{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+select{
+  font-family: 'Noto Sans KR', sans-serif;
 }

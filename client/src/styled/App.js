@@ -26,7 +26,7 @@ export const UDiv = styled.div`
     margin-top: 20px;
     background-color: white;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    width: 96;
+    width: 95%;
     height: auto;
     padding: 20px;
     border-radius: 10px;
@@ -207,7 +207,11 @@ export const Head = styled.div`
     width: 70%;
     height: 100%;
     position: relative;
-    align-items: center;    
+    align-items: center;  
+    
+    .name{
+        padding-right: 10px;
+    }
 `
 
 export const Search = styled.input`
