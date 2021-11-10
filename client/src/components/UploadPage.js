@@ -75,8 +75,8 @@ const UploadPage = () => {
     const Regist = () => {
         if(name){
             if(list){
-                axios.post('http://localhost:1312/pallete', {name: name, pallete: JSON.stringify(list), master: user})
-                    .then(res => alert("성공"))
+                axios.post('http://localhost:1312/pallete', JSON.stringify({name: name, color: list, master: user}))
+                    .then(res => alert(res.data))
                     .then(err => alert("에러"))
             }
             else{

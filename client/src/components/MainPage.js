@@ -3,7 +3,6 @@ import * as S from '../styled/App'
 import Color from '../contents/Color';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory, useLocation} from 'react-router-dom'
-import List from '../Color.json'
 import axios from 'axios';
 
 function MainPage() {
@@ -42,13 +41,13 @@ function MainPage() {
     axios.get('http://localhost:1312/pallete')
       .then(res=>{
         setRlist([...res.data]);
-        const exlist = rlist.map(e => {
+        /*const exlist = rlist.map(e => {
           e.color = JSON.parse(e.color);
           return e;
         })
         setRlist(exlist);
+        console.log(exlist)*/
       })
-
     
     if(getCookie('c-token')){
       axios.get('http://localhost:1312/user')
@@ -58,13 +57,13 @@ function MainPage() {
 
   function Search() {
     if(svalue === 0){
-      setRlist(List.filter(i => i.name.includes(search)));
+      setRlist(list.filter(i => i.name.includes(search)));
     }
     else if(svalue === 1){
-      setRlist(List.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))))
+      setRlist(list.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))))
     }
     else if(svalue === 2){
-      setRlist(List.filter)
+      setRlist(list.filter)
     }
 
   }
@@ -103,17 +102,21 @@ function MainPage() {
         <button onClick={()=>goUpload()}>추가하기 +</button>
         <button onClick={()=>console.log(rlist)}>asd</button>
         </S.H> 
-        {List.map(
+        <>
+        {rlist.map(
           item => {
             return(
-                <Color name={item.name} master={item.master} lists={item.color}/>
+              <Color item={item}/>
             )
           }
         )}
+        </>
       </S.Body>
     </>
   );
 }
+
+//<Color item={item}/>
 
 export default MainPage;
 

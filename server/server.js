@@ -72,7 +72,17 @@ app.get('/pallete', function(req, res){
 app.post('/pallete', async(req, res) => {
     let check = await checklogin(req.headers.authorization.substring(7));
     if(check){
-        db.query(`INSERT INTO pallet (name, color, master) VALUES (${req.body.name}, ${req.body.color}, ${req.body.master})`)
+        db.query(`INSERT INTO pallete (name, color, master) VALUES (${req.body.name}, ${req.body.color}, ${req.body.master})`, function(err, rows){
+            if(err){
+                res.json(err);
+            }
+            else{
+                res.json("성공");
+            }
+        })
+    }
+    else{
+        res.json("권한이 없습니다.")
     }
 })
 

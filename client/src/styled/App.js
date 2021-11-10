@@ -1,4 +1,3 @@
-import exp from "constants";
 import styled from "styled-components";
 
 export const Body = styled.div`
@@ -20,6 +19,8 @@ export const Div = styled.div`
     height: auto;
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 `
 
 export const UDiv = styled.div`
@@ -117,10 +118,16 @@ export const UColor = styled.div`
 
 export const HDiv = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 `
 export const TDiv = styled.div`
     display: flex;
+    justify-content: space-between;
+
+    div{
+        display: flex;
+    }
+
     h3{
         margin: 0;
     }
@@ -151,7 +158,7 @@ export const Color = styled.div`
 
 export const Star = styled.span`
     position: relative;
-    color: ${props => props.color}
+    color: ${props => props.color};
 `
 
 export const CSpan = styled.span`
