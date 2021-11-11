@@ -22,6 +22,8 @@ const Color = ({item}) => {
 
     const [like, setLike] = useState(false);
 
+    const [color, setColor] = useState([]);
+
     useEffect(()=>{
         if(localStorage.getItem('star').includes(item.name)){
             setLike(true);
@@ -29,6 +31,19 @@ const Color = ({item}) => {
         else{
             setLike(false)
         }
+        var c = item.color;
+        c = c.replaceAll(".", "#");
+        var arr = [];
+        arr = c.split("#");
+        arr.shift();
+        arr = arr.map(
+            i => {
+                return "#" + i;
+            }
+        )
+        setColor([...arr]);
+        console.log(item.color);
+        console.log(color);
     },[])
 
     function setStar() {
@@ -76,7 +91,13 @@ const Color = ({item}) => {
             </S.TDiv>
 
             <S.ColorDiv>
-
+            {color.map(
+                i => {
+                    return(
+                        <C color={i} />
+                    );
+                })
+            }
             </S.ColorDiv>
             </S.HDiv>
         </S.Div>
