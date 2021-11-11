@@ -138,6 +138,15 @@ export const TDiv = styled.div`
     }
 `
 
+export const THead = styled.div`
+    display: flex;
+    align-items: center;
+
+    i{
+        margin-left: 10px;
+    }
+`
+
 export const ColorDiv = styled.div`
     position: relative;
     top: 15px;

@@ -69,29 +69,36 @@ app.get('/pallete', function(req, res){
     })
 })
 
+app.post('/test', function(req, res){
+    res.json(req.body);
+})
+
 app.post('/pallete', async(req, res) => {
     let check = await checklogin(req.headers.authorization.substring(7));
     if(check){
         db.query(`SELECT * from pallete where name=${req.body.name}`, function(err, rows){
-            if(rows){
+            if(rows[0]){
                 res.json("이미 존재하는 팔레트 이름 입니다.")
             }
-        })
-        var color = "";
-        req.body.color.map(
-            i => {
-                color += i;
-            }
-        )
-        console.log("color: " + req.body.color)
-        color = color.replaceAll('#', ".");
-        console.log(color);
-        db.query(`INSERT INTO pallete (name, color, master) VALUES (?, ?, ?)`, [req.body.name, color, req.body.master], function(err, rows){
-            if(err){
-                res.json(err);
-            }
             else{
-                res.json("성공");
+                var color = "";
+                console.log(req.body.color)
+                req.body.color.map(
+                    i => {
+                        color += i;
+                    }
+                )
+                console.log("color: " + req.body.color)
+                color = color.replaceAll('#', ".");
+                console.log(color);
+                db.query(`INSERT INTO pallete (name, color, master) VALUES (?, ?, ?)`, [req.body.name, color, req.body.master], function(err, rows){
+                    if(err){
+                        res.json("에러");
+                    }
+                    else{
+                        res.json("성공");
+                    }
+                })
             }
         })
     }

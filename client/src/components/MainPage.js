@@ -106,7 +106,7 @@ function MainPage() {
         {rlist.map(
           item => {
             return(
-              <Color item={item}/>
+              <Color item={item} user={user}/>
             )
           }
         )}

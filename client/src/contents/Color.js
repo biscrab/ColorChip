@@ -18,7 +18,7 @@ const C = ({color}) => {
     );
 }
 
-const Color = ({item}) => {
+const Color = ({item, user}) => {
 
     const [like, setLike] = useState(false);
 
@@ -73,10 +73,15 @@ const Color = ({item}) => {
             <S.HDiv>
 
             <S.TDiv>
-            <div>
-            <h3>{item.name}</h3>
-            <span>made by {item.master}</span>
-            </div>
+            <S.THead>
+                <h3>{item.name}</h3>
+                <span>made by {item.master}</span>
+                {user === item.master ?
+                    <i class="far fa-trash-alt" />
+                    :
+                    <></>
+                }
+            </S.THead>
             <>
             {like === true ?
             <S.Star onClick={()=>setStar()} color="gold"> 
