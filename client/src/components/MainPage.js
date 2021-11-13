@@ -13,7 +13,6 @@ function MainPage() {
   const [list, setList] = useState([]);
   const [rlist, setRlist] = useState([]);
   const [search, setSearch] = useState("");
-  const [svalue, setSvalue] = useState(0);
   const [user, setUser] = useState();
 
   function getCookie(cName) {
@@ -41,6 +40,7 @@ function MainPage() {
     axios.get('http://localhost:1312/pallete')
       .then(res=>{
         setRlist([...res.data]);
+        setList([...res.data]);
         /*const exlist = rlist.map(e => {
           e.color = JSON.parse(e.color);
           return e;
@@ -56,22 +56,17 @@ function MainPage() {
   },[])
 
   function Search() {
-    if(svalue === 0){
+    if(location.pathname === "/"){
       setRlist(list.filter(i => i.name.includes(search)));
     }
-    else if(svalue === 1){
-      setRlist(list.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))))
+    else if(location.pathname === "/like"){
+      setRlist(list.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))));
     }
-    else if(svalue === 2){
-      setRlist(list.filter)
-    }
-
   }
 
   useEffect(()=>{
     Search();
-    console.log(svalue)
-  },[search, svalue])
+  },[search, location.pathname])
 
   const goUpload = () => {
     if(user){
@@ -87,20 +82,15 @@ function MainPage() {
       <S.Body>
         <S.H>
         <S.SearchBox>
-        <select onChange={(e)=>setSvalue(e.target.value)}>
-          <option value={0}>전체 목록보기</option>
-          <option value={1}>즐겨찾기 목록보기{svalue}</option>
-          {user ?
-          <option value={2}>내 팔레트 목록보기</option>
-          :
-          <></>
-          }
-        </select>
         <S.Search placeholder="검색어" onChange={(e)=>setSearch(e.target.value)}/>
         <i class="fas fa-search" style={{color:"gray"}}></i>
         </S.SearchBox>
         <button onClick={()=>goUpload()}>추가하기 +</button>
-        <button onClick={()=>console.log(rlist)}>asd</button>
+        {location.pathname === '/like'?
+          <span onClick={()=>history.push('/')}>전체 목록 보기</span>
+          :
+          <span onClick={()=>history.push('/like')}>즐겨찾기 목록 보기</span>
+        }
         </S.H> 
         <>
         {rlist.map(

@@ -107,19 +107,17 @@ app.post('/pallete', async(req, res) => {
     }
 })
 
-app.delete('/pallete', async(req, res) => {
-    let check = await checklogin(req.headers.authorization.substring(7));
+app.delete('/pallete/:name', async(req, res) => {
+    let check = await checklogin(String(req.headers.authorization).substring(7));
     if(check){
-        if(check.master === req.body.master){
-            db.query(`DELETE FROM pallet where name=${req.body.name} and master=${req.body.master}`, function(err, rows){
+        db.query(`DELETE FROM pallete where name=${req.params.name} and master=${check.name}`, function(err, rows){
                 if(err){
-                    res.json("권한이 없습니다.")
+                    res.json("권한이 없습니다." + err);
                 }
                 else{
                     res.json("삭제")
                 }
             })
-        }
     }
 })
 

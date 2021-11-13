@@ -244,13 +244,6 @@ export const SearchBox = styled.div`
     height: 35px;
     display: flex;
 
-    select{
-        outline: 0;
-        height: 100%;
-        border: 0;
-        outline: 0;
-    }
-
     i{
         height: 15px;
         padding: 10px;
@@ -281,6 +274,14 @@ export const H = styled.div`
         height: 35px;
         text-align: center;
         width: 100px;
+    }
+
+    span{
+        padding-left: 20px;
+        cursor: pointer;
+        :hover{
+            color: gray;
+        }
     }
 `
 

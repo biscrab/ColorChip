@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as S from '../styled/App'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import axios from "axios";
 
 const C = ({color}) => {
 
@@ -68,6 +69,14 @@ const Color = ({item, user}) => {
         console.log(s);
     }
 
+    const deletePallete = () => {
+        axios.delete(`http://localhost:1312/pallete/${item.name}`)
+            .then(res => {
+                alert(res.data);
+                window.location.reload();
+            })
+    }
+
     return(
         <S.Div>
             <S.HDiv>
@@ -77,7 +86,7 @@ const Color = ({item, user}) => {
                 <h3>{item.name}</h3>
                 <span>made by {item.master}</span>
                 {user === item.master ?
-                    <i class="far fa-trash-alt" />
+                    <i class="far fa-trash-alt" onClick={()=>deletePallete()}/>
                     :
                     <></>
                 }
