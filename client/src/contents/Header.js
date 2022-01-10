@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect, useState, useRef} from "react";
 import * as S from '../styled/App'
 import color from '../images/color.png'
 import { useHistory } from "react-router";
@@ -13,6 +13,8 @@ const Header = () => {
     const [onlogin, setOnlogin] = useState(false);
     const [input, setInput] = useState({name: "", password: ""})
     const [cookies, setCookie, removeCookie] = useCookies(['c-token']);
+    const name = useRef();
+    const password = useRef();
 
     function getCookie(cName) {
         cName = cName + '=';
@@ -54,6 +56,14 @@ const Header = () => {
         window.location.reload();
     }
 
+    const onChange = (e) => {
+        const {name, value} = e.target;
+        setInput({
+            ...input,
+            [name]: value
+        })
+    }
+
     const LoginBorder = () => {
         return(
           <S.Background>
@@ -63,8 +73,8 @@ const Header = () => {
                     <span onClick={()=>setOnlogin(false)}>x</span>
                 </S.LoginHeader>
                 <S.LDiv>
-                    <input placeholder="이름" onChange={(e)=>setInput({...input, name: e.target.value})} value={input.name}/>
-                    <input placeholder="비밀번호" onChange={(e)=>setInput({...input, password: e.target.value})} value={input.password}/>
+                    <input ref={name} placeholder="이름" name="name" onChange={(e)=>onChange(e)} value={input.name}/>
+                    <input ref={password} type="password" placeholder="비밀번호" name="password" onChange={(e)=>onChange(e)} value={input.password}/>
                     <div>
                         <button onClick={()=>login()}>로그인</button>
                         <button onClick={()=>signup()}>회원가입</button>

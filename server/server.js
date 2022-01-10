@@ -15,8 +15,6 @@ const db = mysql.createConnection({
     database: "color"
 })
 
-db.connect();
-
 app.post('/signup', function(req, res){
     db.query(`SELECT * from user where name=${req.body.name}`, function(err, rows){
         if(rows === []){
@@ -76,6 +74,7 @@ app.post('/test', function(req, res){
 app.post('/pallete', async(req, res) => {
     let check = await checklogin(req.headers.authorization.substring(7));
     if(check){
+
         db.query(`SELECT * from pallete where name=${req.body.name}`, function(err, rows){
             if(rows[0]){
                 res.json("이미 존재하는 팔레트 이름 입니다.")
@@ -109,13 +108,14 @@ app.post('/pallete', async(req, res) => {
 
 app.delete('/pallete/:name', async(req, res) => {
     let check = await checklogin(String(req.headers.authorization).substring(7));
+    console.log(check.name);
     if(check){
-        db.query(`DELETE FROM pallete where name=${req.params.name} and master=${check.name}`, function(err, rows){
+        db.query(`DELETE FROM pallete where name="${req.params.name}" and master="${check.name}"`, function(err, rows){
                 if(err){
                     res.json("권한이 없습니다." + err);
                 }
                 else{
-                    res.json("삭제")
+                    res.json("삭제가 완료 되었습니다.")
                 }
             })
     }

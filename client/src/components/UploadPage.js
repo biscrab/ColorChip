@@ -93,7 +93,6 @@ const UploadPage = () => {
                 <S.RegistDiv>
                 <S.PB>
                 <h2>제목</h2>
-                <button onClick={()=>console.log([...list])}>123</button>
                 <input placeholder="제목을 입력해주세요." onChange={(e)=>setName(e.target.value)} value={name}></input>
                 </S.PB>
                 <h2>색깔({list.length}/100)</h2>

@@ -30,12 +30,6 @@ function MainPage() {
 }
 
   useEffect(()=>{
-    console.log(rlist);
-    if(!localStorage.star){
-      localStorage.setItem("star", "[]");
-    }
-    console.log(history);
-    console.log(location);
 
     axios.get('http://localhost:1312/pallete')
       .then(res=>{
