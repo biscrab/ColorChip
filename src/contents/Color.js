@@ -48,7 +48,7 @@ const Color = (item, user) => {
             console.log(color);
         }
         getColor();
-    },[])
+    },[color, item.color, item.name, ])
 
     function setStar() {
 
