@@ -26,25 +26,28 @@ const Color = (item, user) => {
     const [color, setColor] = useState([]);
 
     useEffect(()=>{
-        if(localStorage.getItem('star').includes(item.name)){
-            setLike(true);
-        }   
-        else{
-            setLike(false)
-        }
-        var c = item.color;
-        c = c.replaceAll(".", "#");
-        var arr = [];
-        arr = c.split("#");
-        arr.shift();
-        arr = arr.map(
-            i => {
-                return "#" + i;
+        function getColor(){
+            if(localStorage.getItem('star').includes(item.name)){
+                setLike(true);
+            }   
+            else{
+                setLike(false)
             }
-        )
-        setColor([...arr]);
-        console.log(item.color);
-        console.log(color);
+            var c = item.color;
+            c = c.replaceAll(".", "#");
+            var arr = [];
+            arr = c.split("#");
+            arr.shift();
+            arr = arr.map(
+                i => {
+                    return "#" + i;
+                }
+            )
+            setColor([...arr]);
+            console.log(item.color);
+            console.log(color);
+        }
+        getColor();
     },[])
 
     function setStar() {
