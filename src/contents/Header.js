@@ -36,7 +36,7 @@ const Header = () => {
             axios.get('http://color-chip.herokuapp.com/user')
                 .then(res => setUser(res.data))
         }
-    },[])
+    },[cookies, ])
 
     const login = () => {
         axios.post('http://color-chip.herokuapp.com/login', input)
