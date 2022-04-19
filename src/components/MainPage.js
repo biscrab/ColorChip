@@ -30,23 +30,24 @@ function MainPage() {
 }
 
   useEffect(()=>{
-
-    axios.get('http://color-chip.herokuapp.com/pallete')
-      .then(res=>{
-        setRlist([...res.data]);
-        setList([...res.data]);
-        /*const exlist = rlist.map(e => {
-          e.color = JSON.parse(e.color);
-          return e;
+    function getAPI(){
+      axios.get('http://color-chip.herokuapp.com/pallete')
+        .then(res=>{
+          setRlist([...res.data]);
+          setList([...res.data]);
+          /*const exlist = rlist.map(e => {
+            e.color = JSON.parse(e.color);
+            return e;
+          })
+          setRlist(exlist);
+          console.log(exlist)*/
         })
-        setRlist(exlist);
-        console.log(exlist)*/
-      })
-    
-    if(getCookie('c-token')){
-      axios.get('http://color-chip.herokuapp.com/user')
-        .then(res => setUser(res.data))
+      if(getCookie('c-token')){
+        axios.get('http://color-chip.herokuapp.com/user')
+          .then(res => setUser(res.data))
+      }
     }
+    getAPI();
   },[])
 
   function Search() {
