@@ -3,7 +3,7 @@ import * as S from '../styled/App'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import axios from "axios";
 
-const C = ({color}) => {
+const C = (color) => {
 
     const [copy, setCopy] = useState(0);
     
@@ -19,7 +19,7 @@ const C = ({color}) => {
     );
 }
 
-const Color = ({item, user}) => {
+const Color = (item, user) => {
 
     const [like, setLike] = useState(false);
 
