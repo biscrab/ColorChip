@@ -187,6 +187,7 @@ export const Header = styled.div`
     position: fixed;
     top: 0;
     z-index: 100;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.1);
 
     div{
         display: flex;
@@ -225,8 +226,13 @@ export const Head = styled.div`
     position: relative;
     align-items: center;  
     
+    span{
+        cursor: pointer;
+    }
+
     .name{
         padding-right: 10px;
+        cursor: default;
     }
 `
 
