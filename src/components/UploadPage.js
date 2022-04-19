@@ -34,7 +34,7 @@ const UploadPage = () => {
 
     useEffect(()=>{
         if(getCookie('c-token')){
-            axios.get('http://localhost:1312/user')
+            axios.get('http://color-chip.herokuapp.com/user')
                 .then(res => setUser(res.data))
                 .catch(error => {
                     history.push('/')
@@ -75,7 +75,7 @@ const UploadPage = () => {
     const Regist = () => {
         if(name){
             if(list){
-                axios.post('http://localhost:1312/pallete', {name: name, color: [...list], master: user})
+                axios.post('http://color-chip.herokuapp.com/pallete', {name: name, color: [...list], master: user})
                     .then(res => alert(res.data))
             }
             else{

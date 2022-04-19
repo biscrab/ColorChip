@@ -21,10 +21,10 @@ const Header = () => {
         var cookieData = document.cookie;
         var start = cookieData.indexOf(cName);
         var cValue = '';
-        if(start != -1){
+        if(start !== -1){
         start += cName.length;
         var end = cookieData.indexOf(';', start);
-        if(end == -1)end = cookieData.length;
+        if(end === -1)end = cookieData.length;
         cValue = cookieData.substring(start, end);
         }
         return unescape(cValue);
@@ -32,13 +32,13 @@ const Header = () => {
 
     useEffect(()=>{
         if(getCookie('c-token')){
-            axios.get('http://localhost:1312/user')
+            axios.get('http://color-chip.herokuapp.com/user')
                 .then(res => setUser(res.data))
         }
     },[])
 
     const login = () => {
-        axios.post('http://localhost:1312/login', input)
+        axios.post('http://color-chip.herokuapp.com/login', input)
             .then(res => {
                 setOnlogin(false)
                 setCookie('c-token', res.data)
@@ -47,7 +47,7 @@ const Header = () => {
     }
 
     const signup = () => {
-        axios.post('http://localhost:1312/signup', input)
+        axios.post('http://color-chip.herokuapp.com/signup', input)
             .then(res => setOnlogin(false))
     }
 

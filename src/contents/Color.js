@@ -70,7 +70,7 @@ const Color = (item, user) => {
     }
 
     const deletePallete = () => {
-        axios.delete(`http://localhost:1312/pallete/${item.name}`)
+        axios.delete(`http://color-chip.herokuapp.com/pallete/${item.name}`)
             .then(res => {
                 alert(res.data);
                 window.location.reload();

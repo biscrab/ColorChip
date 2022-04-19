@@ -31,7 +31,7 @@ function MainPage() {
 
   useEffect(()=>{
 
-    axios.get('http://localhost:1312/pallete')
+    axios.get('http://color-chip.herokuapp.com/pallete')
       .then(res=>{
         setRlist([...res.data]);
         setList([...res.data]);
@@ -44,7 +44,7 @@ function MainPage() {
       })
     
     if(getCookie('c-token')){
-      axios.get('http://localhost:1312/user')
+      axios.get('http://color-chip.herokuapp.com/user')
         .then(res => setUser(res.data))
     }
   },[])
