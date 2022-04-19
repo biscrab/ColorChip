@@ -1,7 +1,7 @@
 import '../App.css';
 import * as S from '../styled/App'
 import Color from '../contents/Color';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, useLocation} from 'react-router-dom'
 import axios from 'axios';
 

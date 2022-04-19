@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from '../styled/App'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import axios from "axios";

@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import List from '../Color.json'
-import { useHistory, useLocation, useParams, Route, Switch} from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import * as P from '../pages'
 import Header from '../contents/Header';
 import axios from 'axios';
