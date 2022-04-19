@@ -23,10 +23,10 @@ const UploadPage = () => {
         var cookieData = document.cookie;
         var start = cookieData.indexOf(cName);
         var cValue = '';
-        if(start != -1){
+        if(start !== -1){
         start += cName.length;
         var end = cookieData.indexOf(';', start);
-        if(end == -1)end = cookieData.length;
+        if(end === -1)end = cookieData.length;
         cValue = cookieData.substring(start, end);
         }
         return unescape(cValue);
@@ -45,7 +45,7 @@ const UploadPage = () => {
             history.push('/')
             alert("로그인을 해주세요.")
         }
-    },[])
+    },[history, ])
 
     const onChange = (value) => {
         if(input.length <= 7){
