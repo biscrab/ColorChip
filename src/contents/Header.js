@@ -3,6 +3,7 @@ import * as S from '../styled/App'
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
+import logo from '../images/color.png'
 
 const Header = () => {
 
@@ -90,7 +91,7 @@ const Header = () => {
         <S.Header>
             <S.Head onClick={()=>history.push('/')}>
                 <div>
-                    <img src={require('../images/color.png')} alt="head"></img>
+                    <img src={logo} alt="logo"></img>
                     <h2>컬러 칩</h2>
                 </div>
                 {user ?
