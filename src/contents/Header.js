@@ -1,6 +1,5 @@
 import React,{useEffect, useState, useRef} from "react";
 import * as S from '../styled/App'
-import color from '../images/color.png'
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
@@ -91,7 +90,7 @@ const Header = () => {
         <S.Header>
             <S.Head onClick={()=>history.push('/')}>
                 <div>
-                    <img src={color}></img>
+                    <img src={require('../images/color.png')} alt="head"></img>
                     <h2>컬러 칩</h2>
                 </div>
                 {user ?
