@@ -50,18 +50,17 @@ function MainPage() {
     getAPI();
   },[])
 
-  function Search() {
-    if(location.pathname === "/"){
-      setRlist(list.filter(i => i.name.includes(search)));
-    }
-    else if(location.pathname === "/like"){
-      setRlist(list.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))));
-    }
-  }
-
   useEffect(()=>{
+    function Search() {
+      if(location.pathname === "/"){
+        setRlist(list.filter(i => i.name.includes(search)));
+      }
+      else if(location.pathname === "/like"){
+        setRlist(list.filter(i => i.name.includes(search)&&JSON.parse(localStorage.getItem('star').includes(i.name))));
+      }
+    }
     Search();
-  },[search, location.pathname])
+  },[search, location.pathname, list])
 
   const goUpload = () => {
     if(user){

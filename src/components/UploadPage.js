@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from '../styled/App'
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const UploadPage = () => {
 
