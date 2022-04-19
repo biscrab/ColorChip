@@ -31,6 +31,7 @@ const Header = () => {
     }
 
     useEffect(()=>{
+        console.log(cookies);
         if(getCookie('c-token')){
             axios.get('http://color-chip.herokuapp.com/user')
                 .then(res => setUser(res.data))
