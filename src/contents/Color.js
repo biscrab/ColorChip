@@ -27,11 +27,16 @@ const Color = (item, user) => {
 
     useEffect(()=>{
         function getColor(){
-            if(localStorage.getItem('star').includes(item.name)){
-                setLike(true);
-            }   
+            if(localStorage.getItem('star')){
+                if(localStorage.getItem('star').includes(item.name)){
+                    setLike(true);
+                }   
+                else{
+                    setLike(false)
+                }
+            }
             else{
-                setLike(false)
+                setLike(false);
             }
             var c = item.color;
             c = c.replaceAll(".", "#");
@@ -109,9 +114,9 @@ const Color = (item, user) => {
 
             <S.ColorDiv>
             {color.map(
-                i => {
+                (i, index) => {
                     return(
-                        <C color={i} />
+                        <C color={i} key={index} />
                     );
                 })
             }

@@ -35,6 +35,7 @@ function MainPage() {
         .then(res=>{
           setRlist([...res.data]);
           setList([...res.data]);
+          console.log(res);
           /*const exlist = rlist.map(e => {
             e.color = JSON.parse(e.color);
             return e;
@@ -49,7 +50,7 @@ function MainPage() {
     }
     getAPI();
   },[])
-
+/*
   useEffect(()=>{
     function Search() {
       if(location.pathname === "/"){
@@ -60,7 +61,7 @@ function MainPage() {
       }
     }
     Search();
-  },[search, location.pathname, list])
+  },[search, location.pathname, list, ])*/
 
   const goUpload = () => {
     if(user){
@@ -88,9 +89,9 @@ function MainPage() {
         </S.H> 
         <>
         {rlist.map(
-          item => {
+          (item, index) => {
             return(
-              <Color item={item} user={user}/>
+              <Color key={index} item={item} user={user}/>
             )
           }
         )}
